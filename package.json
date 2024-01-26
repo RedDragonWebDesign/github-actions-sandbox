@@ -1,6 +1,5 @@
 {
   "name": "BlueThrust5",
-  "type": "module",
   "devDependencies": {
     "@wdio/cli": "^8.29.1",
     "@wdio/local-runner": "^8.29.1",
