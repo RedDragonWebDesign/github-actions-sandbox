@@ -16,4 +16,4 @@ jobs:
     - run: npm ci
     - run: docker pull selenium/standalone-chrome
     - run: docker run -d -p 4444:4444 --shm-size="2g" selenium/standalone-chrome:4.2.2-20220609
-    - run: npm exec wdio wdio-github.conf.js
+    - run: npm exec wdio
