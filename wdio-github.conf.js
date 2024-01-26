@@ -1,4 +1,4 @@
-import { basicConfig } from 'wdio.conf.js';
+import config from 'wdio.conf.js';
 
 exports.config = {
   ...basicConfig.config,
