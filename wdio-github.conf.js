@@ -1,4 +1,4 @@
-const basicConfig = require('./wdio.conf')
+import { basicConfig } from 'wdio.conf';
 
 exports.config = {
   ...basicConfig.config,
