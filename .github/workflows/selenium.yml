@@ -14,9 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: npm ci
-    - run: docker pull selenium/standalone-chrome
-    - run: docker run -d -p 4444:4444 --shm-size="2g" selenium/standalone-chrome:4.2.2-20220609
-    - run: npm exec wdio -- --baseUrl=http://localhost:4444
+    - uses: nanasess/setup-chromedriver@v2
+    - run: |
+        export DISPLAY=:99
+        chromedriver --url-base=/wd/hub &
+        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & npm exec -c "npm exec wdio"
+
+
     # TODO: change to heroku selenium tests, see if they pass
     # might need to load LAMP stack via a Docker container:
     # https://jasonmccreary.me/articles/install-apache-php-mysql-macos-docker-local-development/
