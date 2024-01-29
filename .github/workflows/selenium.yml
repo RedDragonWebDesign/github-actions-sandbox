@@ -16,4 +16,11 @@ jobs:
     - run: npm ci
     - run: docker pull selenium/standalone-chrome
     - run: docker run -d -p 4444:4444 --shm-size="2g" selenium/standalone-chrome:4.2.2-20220609
-    - run: npm exec wdio
+    - run: npm exec wdio -- --baseUrl=http://localhost:4444
+    # TODO: change to heroku selenium tests, see if they pass
+    # might need to load LAMP stack via a Docker container:
+    # https://jasonmccreary.me/articles/install-apache-php-mysql-macos-docker-local-development/
+    # https://www.google.com/search?q=github+actions+spin+up+apache+php+and+mysql+and+run+a+localhost
+    # idea: put all my bash commands in Docker so I can more easily test GitHub Actions. then just use a one liner here that loads the Dockerfile
+    # eventually, turn this into a GitHub Action called "LAMP stack + WebDriverIO". Good self marketing for RedDragonWebDesign. And I can include it in a bunch of my projects. Could be really useful to people. I feel like there's a huge gap in GitHub Actions for Selenium.
+    # intermediate step: write a dockerfile that gets a localhost running on my computer for BlueThrust dev work. that'll be the exact same setup procedure for the selenium tests :)
